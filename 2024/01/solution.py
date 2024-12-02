@@ -2,7 +2,7 @@
 
 # Read Input and create 2 sorted lists
 from santa_helpers.helpers import read_input
-_input = read_input(False)
+_input = read_input()
 
 
 _input = _input.replace("\n", "   ")
@@ -27,7 +27,8 @@ for location_1, location_2 in zip(list1, list2):
     diff = abs(location_1 - location_2)
     solution_1 = solution_1 + diff
 
-
+print(list1)
+print(list2)
 print(f"Part 1 solution : {solution_1}")
 
 
