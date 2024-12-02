@@ -1,4 +1,4 @@
-from rich import print
+#from rich import print
 
 # Read Input and create 2 sorted lists
 from santa_helpers.helpers import read_input
