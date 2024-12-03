@@ -1,5 +1,6 @@
 from pathlib import Path
 import inspect
+import time
 
 
 def read_input(demo=True):
@@ -13,3 +14,11 @@ def read_input(demo=True):
     with open(filename, "r") as file:
         content = file.read()
     return content
+
+
+def _start():
+    return time.perf_counter()
+
+
+def _stop(start):
+    print(f"took {(time.perf_counter()-start)*1000} ms")
