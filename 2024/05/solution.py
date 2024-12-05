@@ -1,4 +1,4 @@
-from santa_helpers.helpers import read_input
+from santa_helpers.helpers import read_input, _start, _stop
 from rich import print
 
 _input = read_input(False)
@@ -11,6 +11,7 @@ updates = list(
 )
 
 
+# Create dictionary with keys = page_numbers and value = position order
 def get_update_coordinates(updates):
     u = []
     for update in updates:
@@ -21,6 +22,7 @@ def get_update_coordinates(updates):
     return u
 
 
+# Checks is a rule is valid for an update dict
 def check_rule(rule, update):
     first = rule[0]
     second = rule[1]
@@ -44,6 +46,7 @@ def check_rule(rule, update):
     return True
 
 
+# Checks all updates againts all rules and returns a correct & incorrect list
 def check_updates(rules, updates):
     correct_updates = []
     incorrect_updates = []
@@ -65,6 +68,7 @@ def check_updates(rules, updates):
     return correct_updates, incorrect_updates
 
 
+# Get the middle item of every update and sum them
 def get_result(correct_updates):
     total = 0
     for c in correct_updates:
@@ -76,14 +80,18 @@ def get_result(correct_updates):
     return total
 
 
+s = _start()
 c = get_update_coordinates(updates)
 # print(c)
 # print(rules)
 rc, ic = check_updates(rules, c)
 # print(rc)
 print(f"Part1 solution {get_result(rc)}")
+_stop(s)
 
 
+# Check rules until you find an incorrect one
+# then swamp 2 positions and check rules from the beginning again
 def correct_reports(incorrect_reports):
     for update in incorrect_reports:
         index = 0
@@ -103,5 +111,7 @@ def correct_reports(incorrect_reports):
     return incorrect_reports
 
 
+s = _start()
 # print(correct_reports(ic))
 print(f"Part2 solution {get_result(correct_reports(ic))}")
+_stop(s)
